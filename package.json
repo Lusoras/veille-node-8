@@ -1,0 +1,29 @@
+{
+  "name": "veille-node-6-master",
+  "version": "1.0.0",
+  "description": "Exercice 6",
+  "main": "01_App.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "i18n": "^0.8.3",
+    "mongodb": "^3.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lusoras/veille-node-6.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "ejs",
+    "mongodb"
+  ],
+  "author": "Arnaud Ayotte",
+  "license": "ISC"
+}

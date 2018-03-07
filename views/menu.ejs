@@ -1,0 +1,26 @@
+<%
+if(getLocale()=='fr'){
+	langue="en"
+}else{
+	langue="fr"
+}
+%>
+<div class="global couleur-menu">
+	<div> <!-- début barre de menu -->
+
+		<div id='menu'>
+			<nav> 		 
+				 <a href='/'><i class="fa fa fa-users" aria-hidden="true"></i><%= __('accueil')%></a>
+				 <a href='/vider'><i class="fa fa-industry" aria-hidden="true"></i><%= __('vider')%></a>
+ 					<a href='/adresses'><i class="fa fa-graduation-cap" aria-hidden="true"></i>Adresse</a>
+				  <a href='/peupler'><i class="fa fa-keyboard-o" aria-hidden="true"></i>Peupler</a>
+			</nav> 
+			
+				<button type="submit"><a href="<%= langue %>">fr/eng</a></button>
+			
+		</div> 
+	</div> 
+</div>
+
+
+

@@ -1,0 +1,95 @@
+<%
+if(getLocale()=='fr'){
+	langue="en"
+}else{
+	langue="fr"
+}
+%><!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8">
+ <title>Mon Application</title>
+
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+ <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<body>
+
+	<form action="/ajouter" method="POST">
+ <input type="text" placeholder="nom" name="nom">
+ <input type="text" placeholder="prenom" name="prenom">
+ <input type="text" placeholder="telephone" name="telephone">
+ <input type="text" placeholder="courriel" name="courriel">
+ <button type="submit">Submit</button>
+</form>
+ <table class="tableau">
+ 	<% let noLigne = 0 %>
+ 	<% for(element of adresses) {%>
+ 	<% if(noLigne == 0){ %>
+  <tr>
+ 	<% noLigne++ %>
+ 	<% for(p in element) { %>
+ 		<th><a href="/trier/<%= p %>/<%= ordre %>"><%= p %></a></th>
+	<% } %>
+ </tr>
+ <% } %>
+ <tr id='<%= element["_id"] %>'>
+ 	<% for(p in element){ %>
+ 		<td contenteditable='true'><%= element[p] %></td>
+	<% } %>
+	<td><a class='sauver' href="#"><i class="far fa-save"></i></a></td>
+	<td><a href="/detruire/<%= element['_id']%>"><i class="fas fa-trash-alt"></i></a></td>
+ </tr>
+ <% } %>
+ </table>
+
+<form class='mon_formulaire' action="/modifier" name='mon_formulaire' id='mon_formulaire' method="POST" >
+ <input type = "text" placeholder="id" name = "_id" value=''> 
+ <input type = "text" placeholder="Nom" name = "nom"> 
+ <input type = "text" placeholder="Prénom" name = "prenom">
+ <input type = "text" placeholder="Téléphone" name = "telephone">
+  <input type = "text" placeholder="Courriel" name = "courriel">
+ <input type="submit" value='Ajouter'>
+</form>
+
+<script type="text/javascript">
+ let elmSauver = document.querySelectorAll('.sauver')
+ console.log('elmSauver = ' + elmSauver.length)
+ for (elm of elmSauver)
+ {
+ elm.addEventListener('click', function(){
+ /* 
+ console.log(this
+ .parentNode
+ .parentNode
+ .children[1].innerHTML)
+ */
+ let laLigne = this.parentNode.parentNode
+ let id = laLigne.children[0].innerHTML
+ let nom = laLigne.children[1].innerHTML
+ let prenom = laLigne.children[2].innerHTML
+ let telephone = laLigne.children[3].innerHTML
+  let courriel = laLigne.children[4].innerHTML
+
+let elmForm = document.getElementById('mon_formulaire')
+ console.log(elmForm.tagName)
+ let elmInput = elmForm.querySelectorAll('input')
+ elmInput[0].value = id
+ elmInput[1].value = nom
+ elmInput[2].value = prenom
+ elmInput[3].value = telephone
+ elmInput[4].value = courriel
+
+
+elmForm.submit()
+
+ })
+ } 
+</script>
+
+
+				<button type="submit"><a href="<%= langue %>">fr/eng</a></button>
+
+</body>
+</html>
